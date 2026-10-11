@@ -4,6 +4,7 @@ import tempfile
 from pathlib import Path
 
 from django.db import transaction
+from django.shortcuts import render
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
@@ -15,6 +16,11 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from screening_service import screen_resume
 from .models import ScreeningSession
+
+
+def home(request):
+    """Render the TalentLens landing page."""
+    return render(request, "screening/home.html")
 
 
 @api_view(["GET"])

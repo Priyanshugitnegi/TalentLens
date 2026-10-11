@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1120">
+    <title>TalentLens — AI Resume Intelligence</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            background: #0b1120;
+            color: #f8fafc;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container { width: min(1080px, 90%); margin: auto; }
+
+        header {
+            border-bottom: 1px solid #1e293b;
+            background: #0b1120;
+        }
+
+        nav {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand { display: flex; align-items: center; gap: 12px; }
+
+        .logo {
+            width: 44px; height: 44px; border-radius: 13px;
+            display: grid; place-items: center;
+            background: linear-gradient(135deg, #8174ff, #5844d8);
+            font-size: 24px;
+        }
+
+        .brand h2 { font-size: 21px; letter-spacing: -.6px; }
+        .brand p { color: #94a3b8; font-size: 12px; }
+
+        .status {
+            display: flex; align-items: center; gap: 9px;
+            padding: 8px 13px; border: 1px solid #234b3a;
+            background: #10251e; border-radius: 30px;
+            color: #86efac; font-size: 13px;
+        }
+
+        .dot {
+            height: 8px; width: 8px; border-radius: 50%;
+            background: #4ade80;
+        }
+
+        .hero { padding: 85px 0 65px; text-align: center; }
+
+        .eyebrow {
+            display: inline-block; color: #b7adff;
+            background: #1a1940; border: 1px solid #34306c;
+            padding: 7px 14px; border-radius: 30px;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 1.2px;
+        }
+
+        h1 {
+            max-width: 780px; margin: 25px auto 18px;
+            font-size: clamp(38px, 6vw, 66px);
+            line-height: 1.12; letter-spacing: -2.8px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #a99cff, #7dd3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .intro {
+            max-width: 640px; margin: auto;
+            color: #a7b3c7; font-size: 17px;
+        }
+
+        .actions {
+            display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 13px; margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex; align-items: center;
+            justify-content: center; gap: 9px;
+            padding: 12px 19px; border-radius: 10px;
+            text-decoration: none; font-weight: 650;
+            font-size: 14px; transition: .2s;
+        }
+
+        .primary { background: #7565ef; color: white; }
+        .primary:hover { background: #6454dc; transform: translateY(-2px); }
+
+        .secondary {
+            border: 1px solid #344158; color: #e2e8f0;
+            background: #111a2b;
+        }
+
+        .secondary:hover { border-color: #8174ff; }
+
+        .section-label {
+            color: #8e9bb0; font-size: 12px;
+            text-align: center; letter-spacing: 1.8px;
+            font-weight: 700; margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 16px; padding-bottom: 75px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #141e31, #101827);
+            border: 1px solid #26334a;
+            border-radius: 16px; padding: 23px 20px;
+            transition: .2s;
+        }
+
+        .card:hover { border-color: #6559bc; transform: translateY(-3px); }
+
+        .icon {
+            display: grid; place-items: center;
+            width: 43px; height: 43px; border-radius: 12px;
+            background: #26234e; color: #c4baff;
+            font-size: 21px; margin-bottom: 18px;
+        }
+
+        .card h3 { font-size: 16px; margin-bottom: 8px; }
+        .card p { font-size: 13px; color: #99a7bc; }
+
+        .status-panel {
+            display: flex; align-items: center;
+            justify-content: space-between; gap: 20px;
+            border: 1px solid #26334a; background: #111a2b;
+            border-radius: 16px; padding: 23px 25px;
+            margin-bottom: 65px;
+        }
+
+        .status-panel h3 { font-size: 16px; margin-bottom: 3px; }
+        .status-panel p { color: #94a3b8; font-size: 13px; }
+
+        footer {
+            border-top: 1px solid #1e293b;
+            padding: 24px 0; color: #718096;
+            font-size: 12px;
+        }
+
+        footer .container {
+            display: flex; justify-content: space-between;
+            gap: 12px; flex-wrap: wrap;
+        }
+
+        @media (max-width: 800px) {
+            .features { grid-template-columns: repeat(2, 1fr); }
+            .hero { padding-top: 65px; }
+        }
+
+        @media (max-width: 480px) {
+            .features { grid-template-columns: 1fr; }
+            h1 { letter-spacing: -1.5px; }
+            .status-panel { align-items: flex-start; flex-direction: column; }
+            .intro { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="brand">
+                <div class="logo">⌕</div>
+                <div>
+                    <h2>TalentLens</h2>
+                    <p>AI Resume Intelligence</p>
+                </div>
+            </div>
+            <div class="status">
+                <span class="dot"></span>
+                API Online
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <span class="eyebrow">SMARTER HIRING STARTS HERE</span>
+            <h1>Find the right talent, <span>faster.</span></h1>
+            <p class="intro">
+                Evaluate candidate skills against job requirements with
+                AI-powered resume screening, match scores, and clear insights.
+            </p>
+            <div class="actions">
+                <a class="button primary" href="/api/screening/test/">
+                    Check API status &rarr;
+                </a>
+                <a class="button secondary" href="/admin/">
+                    Admin dashboard &nearr;
+                </a>
+            </div>
+        </section>
+
+        <p class="section-label">BUILT FOR A BETTER SCREENING WORKFLOW</p>
+
+        <section class="features">
+            <article class="card">
+                <div class="icon">▤</div>
+                <h3>Resume Analysis</h3>
+                <p>Process PDF and DOCX resumes with a consistent screening workflow.</p>
+            </article>
+
+            <article class="card">
+                <div class="icon">◎</div>
+                <h3>Skill Matching</h3>
+                <p>Compare candidate skills with job requirements and identify gaps.</p>
+            </article>
+
+            <article class="card">
+                <div class="icon">↗</div>
+                <h3>Match Insights</h3>
+                <p>Review match scores, strengths, missing skills, and assessments.</p>
+            </article>
+
+            <article class="card">
+                <div class="icon">◷</div>
+                <h3>Screening History</h3>
+                <p>Retrieve saved screening sessions through the history API.</p>
+            </article>
+        </section>
+
+        <section class="status-panel">
+            <div>
+                <h3>TalentLens screening API</h3>
+                <p>The backend service is available for connected applications.</p>
+            </div>
+            <div class="status">
+                <span class="dot"></span>
+                Service available
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <span>&copy; 2026 TalentLens</span>
+            <span>AI-powered recruitment assistance</span>
+        </div>
+    </footer>
+</body>
+</html>
