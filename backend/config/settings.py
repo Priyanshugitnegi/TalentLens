@@ -23,6 +23,26 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
+if DEBUG:
+    print("WARNING: Django DEBUG is enabled")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+    "django": {
+        "handlers": ["console"],
+        "level": "ERROR",
+        "propagate": False,
+    },
+},
+}
+
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
